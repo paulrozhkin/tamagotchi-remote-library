@@ -142,7 +142,7 @@ public class RestaurantClient {
      * Получить Url адрес сервера, который используется при работе приложения.
      * @return url адрес в строковом представлении.
      */
-    private String GetServerUrl() {
+    public String getServerUrl() {
         return BASE_URL;
     }
 
