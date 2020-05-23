@@ -37,3 +37,10 @@ dependencies {
 	implementation 'com.github.paulrozhkin:tamagotchi-remote-library:Tag'
 }
 ```
+
+3. Add permissions to android manifest
+```
+<!-- Retrofit permission -->
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+```
