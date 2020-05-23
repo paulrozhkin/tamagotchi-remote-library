@@ -23,17 +23,17 @@ This is a library for interacting with the Tamagotchi server.
 
 ```
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 
 2. Add the dependency
 
 ```
 dependencies {
-	        implementation 'com.github.paulrozhkin:tamagotchi-remote-library:Tag'
-	}
+	implementation 'com.github.paulrozhkin:tamagotchi-remote-library:Tag'
+}
 ```
