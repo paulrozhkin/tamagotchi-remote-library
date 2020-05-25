@@ -8,7 +8,7 @@ public class UserModel {
 
     @SerializedName("id")
     @Expose
-    private int id;
+    private Integer id;
 
     @SerializedName("login")
     @Expose
@@ -30,7 +30,20 @@ public class UserModel {
     @Expose
     private String avatar;
 
-    public int getId() {
+    public UserModel() {
+
+    }
+
+    public UserModel(Integer id, String login, Roles role, String fullName, String isBlocked, String avatar) {
+        this.id = id;
+        this.login = login;
+        this.role = role;
+        this.fullName = fullName;
+        this.isBlocked = isBlocked;
+        this.avatar = avatar;
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -46,31 +59,11 @@ public class UserModel {
         return fullName;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setRole(Roles role) {
-        this.role = role;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public String getIsBlocked() {
         return isBlocked;
     }
 
-    public void setIsBlocked(String isBlocked) {
-        this.isBlocked = isBlocked;
-    }
-
     public String getAvatar() {
         return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 }

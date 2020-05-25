@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 
 import com.tamagotchi.tamagotchiserverprotocol.routers.IAccountApiService;
 import com.tamagotchi.tamagotchiserverprotocol.routers.IDishesApiService;
+import com.tamagotchi.tamagotchiserverprotocol.routers.IFeedbackApiService;
 import com.tamagotchi.tamagotchiserverprotocol.routers.IFilesApiService;
 import com.tamagotchi.tamagotchiserverprotocol.routers.IMenuApiService;
+import com.tamagotchi.tamagotchiserverprotocol.routers.IOrdersApiService;
+import com.tamagotchi.tamagotchiserverprotocol.routers.ITablesApiService;
 import com.tamagotchi.tamagotchiserverprotocol.routers.IUsersApiService;
 import com.tamagotchi.tamagotchiserverprotocol.routers.IAuthenticateApiService;
 import com.tamagotchi.tamagotchiserverprotocol.routers.IRestaurantsApiService;
@@ -34,7 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RestaurantClient {
     private static RestaurantClient instance = null;
-    private static final String  BASE_URL = "https://restaurant-tamagotchi.ru:3000/api/";
+    private static final String BASE_URL = "https://restaurant-tamagotchi.ru:3000/api/";
 
     private final IUsersApiService usersServices;
     private final AuthenticateInfoService authenticateInfoService = new AuthenticateInfoService();
@@ -44,6 +47,9 @@ public class RestaurantClient {
     private final IDishesApiService dishesService;
     private final IMenuApiService menuApiService;
     private final IFilesApiService filesApiService;
+    private final IOrdersApiService ordersApiService;
+    private final ITablesApiService tablesApiService;
+    private final IFeedbackApiService feedbackApiService;
 
     /**
      * Инициализация retrofit клиента.
@@ -83,6 +89,9 @@ public class RestaurantClient {
         dishesService = retrofit.create(IDishesApiService.class);
         menuApiService = retrofit.create(IMenuApiService.class);
         filesApiService = retrofit.create(IFilesApiService.class);
+        ordersApiService = retrofit.create(IOrdersApiService.class);
+        tablesApiService = retrofit.create(ITablesApiService.class);
+        feedbackApiService = retrofit.create(IFeedbackApiService.class);
     }
 
     private static OkHttpClient.Builder generateDefaultOkHttpBuilder() {
@@ -140,6 +149,7 @@ public class RestaurantClient {
 
     /**
      * Получить Url адрес сервера, который используется при работе приложения.
+     *
      * @return url адрес в строковом представлении.
      */
     public String getServerUrl() {
@@ -178,31 +188,72 @@ public class RestaurantClient {
 
     /**
      * Предоставляет сервис для работы с ресторанми.
+     *
      * @return /api/restaurants service
      */
-    public IRestaurantsApiService getRestaurantsService() { return restaurantsService; }
+    public IRestaurantsApiService getRestaurantsService() {
+        return restaurantsService;
+    }
 
     /**
      * Предоставлят сервис для работы с аккаунтом пользователя.
+     *
      * @return /api/account
      */
-    public IAccountApiService getAccountService() { return accountService; }
+    public IAccountApiService getAccountService() {
+        return accountService;
+    }
 
     /**
      * Предоставлят сервис для работы с блюдами в системе.
+     *
      * @return /api/dishes
      */
-    public IDishesApiService getDishesService() { return dishesService; }
+    public IDishesApiService getDishesService() {
+        return dishesService;
+    }
 
     /**
      * Предоставлят сервис для работы с меню ресторана.
+     *
      * @return /api/dishes
      */
-    public IMenuApiService getMenuService() { return menuApiService; }
+    public IMenuApiService getMenuService() {
+        return menuApiService;
+    }
 
     /**
      * Предосталвяет сервис для работы с файлами.
+     *
      * @return /api/files
      */
-    public IFilesApiService getFilesApiService() { return filesApiService; }
+    public IFilesApiService getFilesApiService() {
+        return filesApiService;
+    }
+
+    /**
+     * Предоставляет сервис для работы с заказами.
+     *
+     * @return /api/orders
+     */
+    public IOrdersApiService getOrdersApiService() {
+        return ordersApiService;
+    }
+
+    /**
+     * Предоставляет сервис для работы со столиками.
+     *
+     * @return /api/tables
+     */
+    public ITablesApiService getTablesApiService() {
+        return tablesApiService;
+    }
+
+    /**
+     * Предоставляет сервис для работы с обратной связью.
+     * @return /feedback/
+     */
+    public IFeedbackApiService getFeedbackApiService() {
+        return feedbackApiService;
+    }
 }

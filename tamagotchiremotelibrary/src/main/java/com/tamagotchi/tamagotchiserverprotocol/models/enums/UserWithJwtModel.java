@@ -9,6 +9,10 @@ public class UserWithJwtModel extends UserModel {
     @Expose
     private String token;
 
+    public UserWithJwtModel() {
+        super(id, login, role, fullName, isBlocked, avatar);
+    }
+
     public String getToken() {
         return token;
     }

@@ -29,51 +29,36 @@ public class UpdatableInfoUser {
     @Expose
     private String password;
 
-    public String getPassword() {
-        return password;
+    public UpdatableInfoUser(String login, Roles role, String fullName, String isBlocked, String avatar, String password) {
+        this.login = login;
+        this.role = role;
+        this.fullName = fullName;
+        this.isBlocked = isBlocked;
+        this.avatar = avatar;
+        this.password = password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getPassword() {
+        return password;
     }
 
     public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
     public String getIsBlocked() {
         return isBlocked;
-    }
-
-    public void setIsBlocked(String isBlocked) {
-        this.isBlocked = isBlocked;
     }
 
     public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public Roles getRole() {
         return role;
     }
 
-    public void setRole(Roles role) {
-        this.role = role;
-    }
-
     public String getLogin() {
         return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 }
