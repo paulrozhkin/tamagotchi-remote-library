@@ -10,6 +10,10 @@ public class UserWithJwtModel extends UserModel {
     private String token;
 
     public UserWithJwtModel() {
+
+    }
+
+    public UserWithJwtModel(Integer id, String login, Roles role, String fullName, Boolean isBlocked, Integer avatar) {
         super(id, login, role, fullName, isBlocked, avatar);
     }
 

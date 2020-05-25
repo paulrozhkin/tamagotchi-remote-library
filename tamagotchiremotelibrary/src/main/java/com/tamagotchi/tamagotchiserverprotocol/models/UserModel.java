@@ -24,17 +24,17 @@ public class UserModel {
 
     @SerializedName("isBlocked")
     @Expose
-    private String isBlocked;
+    private Boolean isBlocked;
 
     @SerializedName("avatar")
     @Expose
-    private String avatar;
+    private Integer avatar;
 
     public UserModel() {
 
     }
 
-    public UserModel(Integer id, String login, Roles role, String fullName, String isBlocked, String avatar) {
+    public UserModel(Integer id, String login, Roles role, String fullName, Boolean isBlocked, Integer avatar) {
         this.id = id;
         this.login = login;
         this.role = role;
@@ -59,11 +59,11 @@ public class UserModel {
         return fullName;
     }
 
-    public String getIsBlocked() {
+    public Boolean getIsBlocked() {
         return isBlocked;
     }
 
-    public String getAvatar() {
+    public Integer getAvatar() {
         return avatar;
     }
 }
