@@ -61,21 +61,6 @@ public class OrderModelTest {
         );
     }
 
-    /**
-     * Проверяет равернство
-     */
-    @Test
-    public void Should_GetCorrectToken_When_Create() {
-        // Given
-        String token = "token";
-
-        // When
-        AuthenticateInfoModel created = new AuthenticateInfoModel(token);
-
-        // Then
-        Assert.assertEquals(token, created.getToken());
-    }
-
     @Test
     public void Should_BeEquals_When_FieldsAreSame() {
         // Given
@@ -125,8 +110,7 @@ public class OrderModelTest {
                 defaultVisitTIme,
                 defaultTimeCreated
         );
-
-
+        
         // Then
         Assert.assertNotEquals(actual, expected);
     }
