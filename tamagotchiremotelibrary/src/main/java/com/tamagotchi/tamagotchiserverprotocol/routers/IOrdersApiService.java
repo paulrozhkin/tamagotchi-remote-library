@@ -27,7 +27,7 @@ public interface IOrdersApiService {
      * @return Observable orders.
      */
     @GET("orders")
-    Single<List<OrderModel>> getAllOrders(@Query("client") String clientFilter,
+    Single<List<OrderModel>> getAllOrders(@Query("client") Integer clientFilter,
                                           @Query("status") OrderStatus statusFilter,
                                           @Query("cooks_status") OrderStatus cooksStatusFilter,
                                           @Query("waiters_status") OrderStatus waitersStatusFilter);
