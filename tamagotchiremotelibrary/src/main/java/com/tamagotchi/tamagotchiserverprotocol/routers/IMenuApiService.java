@@ -20,6 +20,6 @@ public interface IMenuApiService {
      * Get menu item by id.
      * @return menu item.
      */
-    @GET("restaurants/{restaurantId}/{menuItemId}")
+    @GET("restaurants/{restaurantId}/menu/{menuItemId}")
     Single<MenuItem> getMenuItemById(@Path("restaurantId") Integer restaurantId, @Path("menuItemId") Integer menuItemId);
 }
