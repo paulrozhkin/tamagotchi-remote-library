@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.tamagotchi.tamagotchiserverprotocol.models.enums.Roles;
 
+import java.util.Objects;
+
 public class UserModel {
 
     @SerializedName("id")
@@ -65,5 +67,23 @@ public class UserModel {
 
     public Integer getAvatar() {
         return avatar;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserModel userModel = (UserModel) o;
+        return Objects.equals(id, userModel.id) &&
+                Objects.equals(login, userModel.login) &&
+                role == userModel.role &&
+                Objects.equals(fullName, userModel.fullName) &&
+                Objects.equals(isBlocked, userModel.isBlocked) &&
+                Objects.equals(avatar, userModel.avatar);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, role, fullName, isBlocked, avatar);
     }
 }

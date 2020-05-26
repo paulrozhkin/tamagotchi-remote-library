@@ -3,6 +3,8 @@ package com.tamagotchi.tamagotchiserverprotocol.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 public class FeedbackCreateModel {
     @SerializedName("feedback")
     @Expose
@@ -28,4 +30,16 @@ public class FeedbackCreateModel {
         return feedback;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FeedbackCreateModel that = (FeedbackCreateModel) o;
+        return Objects.equals(feedback, that.feedback);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(feedback);
+    }
 }

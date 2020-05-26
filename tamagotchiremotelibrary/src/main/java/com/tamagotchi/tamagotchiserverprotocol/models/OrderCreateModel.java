@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class OrderCreateModel {
     @SerializedName("restaurant")
@@ -39,16 +40,21 @@ public class OrderCreateModel {
     }
 
     /**
-     *
-     * @param paymentToken
-     * @param visitTime
-     * @param numberOfPersons
-     * @param restaurant
-     * @param client
-     * @param comment
-     * @param menu
+     * @param paymentToken Yandex checkout payment token.
+     * @param visitTime client visit time.
+     * @param numberOfPersons the number of people who will come by order..
+     * @param restaurant restaurant id.
+     * @param client client id.
+     * @param comment client comment to order.
+     * @param menu order menu.
      */
-    public OrderCreateModel(Integer restaurant, Integer client, @NotNull List<Integer> menu, Integer numberOfPersons, String comment, String paymentToken, String visitTime) {
+    public OrderCreateModel(Integer restaurant,
+                            Integer client,
+                            @NotNull List<Integer> menu,
+                            Integer numberOfPersons,
+                            String comment,
+                            String paymentToken,
+                            String visitTime) {
         super();
         this.restaurant = restaurant;
         this.client = client;
@@ -87,5 +93,24 @@ public class OrderCreateModel {
 
     public String getVisitTime() {
         return visitTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderCreateModel that = (OrderCreateModel) o;
+        return Objects.equals(restaurant, that.restaurant) &&
+                Objects.equals(client, that.client) &&
+                Objects.equals(menu, that.menu) &&
+                Objects.equals(numberOfPersons, that.numberOfPersons) &&
+                Objects.equals(comment, that.comment) &&
+                Objects.equals(paymentToken, that.paymentToken) &&
+                Objects.equals(visitTime, that.visitTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(restaurant, client, menu, numberOfPersons, comment, paymentToken, visitTime);
     }
 }

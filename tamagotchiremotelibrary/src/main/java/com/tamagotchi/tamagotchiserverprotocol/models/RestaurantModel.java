@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 public class RestaurantModel {
     @SerializedName("id")
@@ -112,5 +113,26 @@ public class RestaurantModel {
 
     public void setDeleted(Boolean deleted) {
         isDeleted = deleted;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RestaurantModel that = (RestaurantModel) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(positionLatitude, that.positionLatitude) &&
+                Objects.equals(photos, that.photos) &&
+                Objects.equals(positionLongitude, that.positionLongitude) &&
+                Objects.equals(isParkingPresent, that.isParkingPresent) &&
+                Objects.equals(isCardPaymentPresent, that.isCardPaymentPresent) &&
+                Objects.equals(isWifiPresent, that.isWifiPresent) &&
+                Objects.equals(isDeleted, that.isDeleted);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, address, positionLatitude, photos, positionLongitude, isParkingPresent, isCardPaymentPresent, isWifiPresent, isDeleted);
     }
 }

@@ -2,20 +2,23 @@ package com.tamagotchi.tamagotchiserverprotocol.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.tamagotchi.tamagotchiserverprotocol.models.enums.OrderStatus;
+import com.tamagotchi.tamagotchiserverprotocol.models.enums.StaffStatus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class OrderPathModel {
     @SerializedName("orderStatus")
     @Expose
-    private String orderStatus;
+    private OrderStatus orderStatus;
     @SerializedName("orderCooksStatus")
     @Expose
-    private String orderCooksStatus;
+    private StaffStatus orderCooksStatus;
     @SerializedName("orderWaitersStatus")
     @Expose
-    private String orderWaitersStatus;
+    private StaffStatus orderWaitersStatus;
     @SerializedName("cooks")
     @Expose
     private List<Integer> cooks = new ArrayList<Integer>();
@@ -36,9 +39,9 @@ public class OrderPathModel {
      * @param cooks
      * @param orderCooksStatus
      */
-    public OrderPathModel(String orderStatus,
-                          String orderCooksStatus,
-                          String orderWaitersStatus,
+    public OrderPathModel(OrderStatus orderStatus,
+                          StaffStatus orderCooksStatus,
+                          StaffStatus orderWaitersStatus,
                           List<Integer> cooks,
                           List<Integer> waiters) {
         super();
@@ -49,16 +52,16 @@ public class OrderPathModel {
         this.waiters = waiters;
     }
 
-    public String getOrderStatus() {
+    public OrderStatus getOrderStatus() {
         return orderStatus;
     }
 
-    public String getOrderCooksStatus() {
+    public StaffStatus getOrderCooksStatus() {
         return orderCooksStatus;
     }
 
 
-    public String getOrderWaitersStatus() {
+    public StaffStatus getOrderWaitersStatus() {
         return orderWaitersStatus;
     }
 
@@ -72,4 +75,20 @@ public class OrderPathModel {
         return waiters;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderPathModel that = (OrderPathModel) o;
+        return Objects.equals(orderStatus, that.orderStatus) &&
+                Objects.equals(orderCooksStatus, that.orderCooksStatus) &&
+                Objects.equals(orderWaitersStatus, that.orderWaitersStatus) &&
+                Objects.equals(cooks, that.cooks) &&
+                Objects.equals(waiters, that.waiters);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderStatus, orderCooksStatus, orderWaitersStatus, cooks, waiters);
+    }
 }

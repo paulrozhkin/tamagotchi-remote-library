@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DishModel {
 
@@ -44,5 +45,21 @@ public class DishModel {
 
     public List<Integer> getPhotos() {
         return photos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DishModel dishModel = (DishModel) o;
+        return id == dishModel.id &&
+                Objects.equals(name, dishModel.name) &&
+                Objects.equals(description, dishModel.description) &&
+                Objects.equals(photos, dishModel.photos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, photos);
     }
 }

@@ -2,8 +2,11 @@ package com.tamagotchi.tamagotchiserverprotocol.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.tamagotchi.tamagotchiserverprotocol.models.enums.OrderStatus;
+import com.tamagotchi.tamagotchiserverprotocol.models.enums.StaffStatus;
 
 import java.util.List;
+import java.util.Objects;
 
 public class OrderModel {
 
@@ -24,13 +27,13 @@ public class OrderModel {
     private String comment;
     @SerializedName("orderStatus")
     @Expose
-    private String orderStatus;
+    private OrderStatus orderStatus;
     @SerializedName("orderCooksStatus")
     @Expose
-    private String orderCooksStatus;
+    private StaffStatus orderCooksStatus;
     @SerializedName("orderWaitersStatus")
     @Expose
-    private String orderWaitersStatus;
+    private StaffStatus orderWaitersStatus;
     @SerializedName("cooks")
     @Expose
     private List<Integer> cooks = null;
@@ -72,7 +75,20 @@ public class OrderModel {
      * @param timeCreated
      * @param id
      */
-    public OrderModel(Integer restaurant, Integer client, List<Integer> menu, Integer numberOfPersons, String comment, String orderStatus, String orderCooksStatus, String orderWaitersStatus, List<Integer> cooks, List<Integer> waiters, Integer totalAmount, Integer id, VisitTime visitTime, String timeCreated) {
+    public OrderModel(Integer restaurant,
+                      Integer client,
+                      List<Integer> menu,
+                      Integer numberOfPersons,
+                      String comment,
+                      OrderStatus orderStatus,
+                      StaffStatus orderCooksStatus,
+                      StaffStatus orderWaitersStatus,
+                      List<Integer> cooks,
+                      List<Integer> waiters,
+                      Integer totalAmount,
+                      Integer id,
+                      VisitTime visitTime,
+                      String timeCreated) {
         super();
         this.restaurant = restaurant;
         this.client = client;
@@ -110,15 +126,15 @@ public class OrderModel {
         return comment;
     }
 
-    public String getOrderStatus() {
+    public OrderStatus getOrderStatus() {
         return orderStatus;
     }
 
-    public String getOrderCooksStatus() {
+    public StaffStatus getOrderCooksStatus() {
         return orderCooksStatus;
     }
 
-    public String getOrderWaitersStatus() {
+    public StaffStatus getOrderWaitersStatus() {
         return orderWaitersStatus;
     }
 
@@ -144,5 +160,31 @@ public class OrderModel {
 
     public String getTimeCreated() {
         return timeCreated;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderModel that = (OrderModel) o;
+        return Objects.equals(restaurant, that.restaurant) &&
+                Objects.equals(client, that.client) &&
+                Objects.equals(menu, that.menu) &&
+                Objects.equals(numberOfPersons, that.numberOfPersons) &&
+                Objects.equals(comment, that.comment) &&
+                orderStatus == that.orderStatus &&
+                orderCooksStatus == that.orderCooksStatus &&
+                orderWaitersStatus == that.orderWaitersStatus &&
+                Objects.equals(cooks, that.cooks) &&
+                Objects.equals(waiters, that.waiters) &&
+                Objects.equals(totalAmount, that.totalAmount) &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(visitTime, that.visitTime) &&
+                Objects.equals(timeCreated, that.timeCreated);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(restaurant, client, menu, numberOfPersons, comment, orderStatus, orderCooksStatus, orderWaitersStatus, cooks, waiters, totalAmount, id, visitTime, timeCreated);
     }
 }
