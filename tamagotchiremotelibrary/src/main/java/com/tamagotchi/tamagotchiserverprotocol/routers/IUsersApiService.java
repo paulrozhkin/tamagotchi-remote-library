@@ -32,7 +32,7 @@ public interface IUsersApiService {
      * @return User info.
      */
     @GET("users/{id}")
-    Single<UserModel> getUserById(@Path("uid") int id);
+    Single<UserModel> getUserById(@Path("id") int id);
 
     /**
      * Update user.
