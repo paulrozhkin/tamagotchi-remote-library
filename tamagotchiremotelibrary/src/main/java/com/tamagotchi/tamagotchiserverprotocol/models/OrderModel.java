@@ -34,6 +34,9 @@ public class OrderModel {
     @SerializedName("orderWaitersStatus")
     @Expose
     private StaffStatus orderWaitersStatus;
+    @SerializedName("reservedTable")
+    @Expose
+    private List<Integer> reservedTable = null;
     @SerializedName("cooks")
     @Expose
     private List<Integer> cooks = null;
@@ -68,6 +71,7 @@ public class OrderModel {
      * @param orderCooksStatus
      * @param orderWaitersStatus
      * @param totalAmount
+     * @param reservedTable
      * @param visitTime
      * @param waiters
      * @param client
@@ -83,6 +87,7 @@ public class OrderModel {
                       OrderStatus orderStatus,
                       StaffStatus orderCooksStatus,
                       StaffStatus orderWaitersStatus,
+                      List<Integer> reservedTable,
                       List<Integer> cooks,
                       List<Integer> waiters,
                       Integer totalAmount,
@@ -98,6 +103,7 @@ public class OrderModel {
         this.orderStatus = orderStatus;
         this.orderCooksStatus = orderCooksStatus;
         this.orderWaitersStatus = orderWaitersStatus;
+        this.reservedTable = reservedTable;
         this.cooks = cooks;
         this.waiters = waiters;
         this.totalAmount = totalAmount;
@@ -128,6 +134,10 @@ public class OrderModel {
 
     public OrderStatus getOrderStatus() {
         return orderStatus;
+    }
+
+    public List<Integer> getReservedTable() {
+        return reservedTable;
     }
 
     public StaffStatus getOrderCooksStatus() {
@@ -175,6 +185,7 @@ public class OrderModel {
                 orderStatus == that.orderStatus &&
                 orderCooksStatus == that.orderCooksStatus &&
                 orderWaitersStatus == that.orderWaitersStatus &&
+                Objects.equals(reservedTable, that.reservedTable) &&
                 Objects.equals(cooks, that.cooks) &&
                 Objects.equals(waiters, that.waiters) &&
                 Objects.equals(totalAmount, that.totalAmount) &&
@@ -185,6 +196,6 @@ public class OrderModel {
 
     @Override
     public int hashCode() {
-        return Objects.hash(restaurant, client, menu, numberOfPersons, comment, orderStatus, orderCooksStatus, orderWaitersStatus, cooks, waiters, totalAmount, id, visitTime, timeCreated);
+        return Objects.hash(restaurant, client, menu, numberOfPersons, comment, orderStatus, orderCooksStatus, orderWaitersStatus, reservedTable, cooks, waiters, totalAmount, id, visitTime, timeCreated);
     }
 }

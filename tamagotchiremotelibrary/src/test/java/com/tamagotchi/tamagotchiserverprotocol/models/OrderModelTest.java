@@ -27,6 +27,9 @@ public class OrderModelTest {
     private static final OrderStatus defaultOrderStatus = OrderStatus.Completed;
     private static final StaffStatus defaultCooksStatus = StaffStatus.Ready;
     private static final StaffStatus defaultWaitersStatus = StaffStatus.Ready;
+    private static final List<Integer> defaultReservedTables = new ArrayList<Integer>() {{
+        add(1);
+    }};
     private static final List<Integer> defaultCooks = new ArrayList<Integer>() {{
         add(1);
     }};
@@ -52,6 +55,7 @@ public class OrderModelTest {
                 defaultOrderStatus,
                 defaultCooksStatus,
                 defaultWaitersStatus,
+                defaultReservedTables,
                 defaultCooks,
                 defaultWaiters,
                 defaultTotalAmounts,
@@ -76,6 +80,7 @@ public class OrderModelTest {
                 defaultOrderStatus,
                 defaultCooksStatus,
                 defaultWaitersStatus,
+                defaultReservedTables,
                 defaultCooks,
                 defaultWaiters,
                 defaultTotalAmounts,
@@ -103,6 +108,7 @@ public class OrderModelTest {
                 defaultOrderStatus,
                 defaultCooksStatus,
                 defaultWaitersStatus,
+                defaultReservedTables,
                 defaultCooks,
                 defaultWaiters,
                 defaultTotalAmounts,
@@ -110,7 +116,37 @@ public class OrderModelTest {
                 defaultVisitTIme,
                 defaultTimeCreated
         );
-        
+
+        // Then
+        Assert.assertNotEquals(actual, expected);
+    }
+
+    @Test
+    public void Should_NotBeEquals_When_ReservedTableFieldAreNoteSame() {
+        // Given
+        OrderModel actual = defaultOderModel;
+
+        // When
+        OrderModel expected = new OrderModel(
+                defaultRestaurant,
+                defaultClient,
+                defaultMenu,
+                defaultNumberOfPersons,
+                defaultComment,
+                defaultOrderStatus,
+                defaultCooksStatus,
+                defaultWaitersStatus,
+                new ArrayList<Integer>() {{
+                    add(2512);
+                }},
+                defaultCooks,
+                defaultWaiters,
+                defaultTotalAmounts,
+                defaultTotalId,
+                defaultVisitTIme,
+                defaultTimeCreated
+        );
+
         // Then
         Assert.assertNotEquals(actual, expected);
     }
