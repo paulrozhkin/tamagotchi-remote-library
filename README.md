@@ -11,6 +11,7 @@ This is a library for interacting with the Tamagotchi server.
 ---
 
 ## Linked Repositories
+- [Server](https://github.com/paulrozhkin/tamagotchi-server)
 - [Web client](https://github.com/paulrozhkin/tamagotchi-web-client)
 - [Android client application](https://github.com/paulrozhkin/tamagotch-android-client)
 - [Android stuff application](https://github.com/ForsaiR/RestaurantEmployerApplication)
