@@ -21,7 +21,7 @@ public class UpdatableInfoUser {
 
     @SerializedName("isBlocked")
     @Expose
-    private String isBlocked;
+    private Boolean isBlocked;
 
     @SerializedName("avatar")
     @Expose
@@ -31,7 +31,7 @@ public class UpdatableInfoUser {
     @Expose
     private String password;
 
-    public UpdatableInfoUser(String login, Roles role, String fullName, String isBlocked, Integer avatar, String password) {
+    public UpdatableInfoUser(String login, Roles role, String fullName, Boolean isBlocked, Integer avatar, String password) {
         this.login = login;
         this.role = role;
         this.fullName = fullName;
@@ -48,7 +48,7 @@ public class UpdatableInfoUser {
         return avatar;
     }
 
-    public String getIsBlocked() {
+    public Boolean getIsBlocked() {
         return isBlocked;
     }
 
