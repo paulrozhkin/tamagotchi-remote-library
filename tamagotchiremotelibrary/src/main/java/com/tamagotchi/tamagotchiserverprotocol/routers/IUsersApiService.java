@@ -36,11 +36,12 @@ public interface IUsersApiService {
 
     /**
      * Update user.
+     * @param id user id.
      * @param update info for update.
      * @return updated user.
      */
-    @PUT("users/")
-    Single<UserModel> updateUser(@Body UpdatableInfoUser update);
+    @PUT("users/{id}")
+    Single<UserModel> updateUser(@Path("id") int id, @Body UpdatableInfoUser update);
 
     /**
      * Create user.
