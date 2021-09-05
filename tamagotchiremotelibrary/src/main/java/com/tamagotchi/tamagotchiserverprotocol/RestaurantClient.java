@@ -37,7 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RestaurantClient {
     private static RestaurantClient instance = null;
-    private static final String BASE_URL = "https://restaurant-tamagotchi.ru:3000/api/";
+    private static String BASE_URL;
 
     private final IUsersApiService usersServices;
     private final AuthenticateInfoService authenticateInfoService = new AuthenticateInfoService();
@@ -54,9 +54,16 @@ public class RestaurantClient {
     /**
      * Инициализация retrofit клиента.
      */
-    private RestaurantClient() {
+    private RestaurantClient(String url) {
         HttpLoggingInterceptor logger = new HttpLoggingInterceptor();
         logger.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
+
+        if (url.isEmpty())
+        {
+            throw new RuntimeException("Url can't be empty");
+        }
+        
+        BASE_URL = url;
 
         OkHttpClient client = generateDefaultOkHttpBuilder()
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -139,9 +146,9 @@ public class RestaurantClient {
         return builder;
     }
 
-    public synchronized static RestaurantClient getInstance() {
+    public synchronized static RestaurantClient getInstance(String url) {
         if (instance == null) {
-            instance = new RestaurantClient();
+            instance = new RestaurantClient(url);
         }
 
         return instance;
